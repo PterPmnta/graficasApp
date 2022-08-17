@@ -16,9 +16,7 @@ export class DonaHttpComponent implements OnInit {
   constructor(private graficasService: GraficasService) {}
 
   ngOnInit(): void {
-    this.graficasService.getDataDona().subscribe((data) => {
-      const labels = Object.keys(data);
-      const datos = Object.values(data);
+    this.graficasService.getDataTransformed().subscribe(({ labels, datos }) => {
       this.doughnutChartData.labels = labels;
       this.doughnutChartData.datasets = [{ data: datos }];
     });
